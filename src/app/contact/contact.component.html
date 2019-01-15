@@ -1,0 +1,52 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="submit(f)" >
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="firstName">First Name</label>
+      <div class="col-sm-6">
+          <input required="required" ngModel name="firstName" (change)="log(firstName)" #firstName id="firstName" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="!firstName.value">first Name is required!</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="comment">Comment</label>
+      <div class="col-sm-6">
+        <input id="comment" type="text" ngModel name="comment" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="contact">Contact</label>
+      <div class="col-sm-6">
+        <select id="contact" type="text" ngModel name="contact" class="form-control">
+          <option *ngFor="let contact of contacts" [value]="contact.id" > {{contact.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-1">
+      <div class="radio" *ngFor="let contact of contacts">
+        <label>
+          <input id="male" type="radio" ngModel name="gender" class="form-check-input"
+                  [value]="contact.id" >{{contact.name}}
+        </label>
+      </div>
+      </div>
+
+    </div>
+
+      <div class="form-group row">
+        <div class="checkbox">
+        <label >
+          <input id="checkbox" type="checkbox" ngModel name="isSub" class="form-check-input">Subscribe!
+        </label>
+        </div>
+
+        <p>
+          {{f.value | json}}
+        </p>
+
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+  </form>
+</div>
