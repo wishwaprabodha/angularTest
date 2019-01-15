@@ -38,21 +38,22 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Id</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Avatar</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let author of authors">
-      <th scope="row">1</th>
-      <td >{{author.value}}</td>
+    <tr *ngFor="let author of au">
+      <th scope="row">{{author.idAuthor}}</th>
+      <td >{{author.idAuthor}}</td>
+      <td >{{author.nameAuthor}}</td>
+      <td >{{author.ageAuthor}}</td>
     </tr>
     </tbody>
   </table>
 </div>
-
+<!--
 <ul>
-  <li *ngFor="let author of authors">
-  {{author}}</li>
-</ul>
+  <li *ngFor="let author of au">
+    {{author.nameAuthor}}</li>
+</ul>-->

@@ -1,27 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {parseHttpResponse} from 'selenium-webdriver/http';
+
 
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
   styleUrls: ['./author.component.css']
 })
-export class AuthorComponent implements OnInit {
+export class AuthorComponent {
 
 
-  authors: Object;
+  au: any[] = [];
 
-  constructor( private http: HttpClient) {
-    http.get('https://reqres.in/api/users?page=2')
-      .subscribe(response => {
-         this.authors = response;
-        console.log(this.authors);
-
+  constructor(private http: HttpClient) {
+    http.get<any[]>('http://localhost:3000/api/authors')
+      .subscribe((res: any[]) => {
+        console.log(res);
+        this.au = res;
       });
-  }
-
-  ngOnInit() {
   }
 
 }
