@@ -1,17 +1,17 @@
 <div class="container">
 
-  <form #fg="ngForm" >
+  <form  #fg ="ngForm"  >
     <div class="form-group row">
       <label class="col-sm-2 col-form-label" for="authorId">Author Id</label>
       <div class="col-sm-4">
-        <input ngModel name="authorId" id="authorId" type="text" class="form-control">
+        <input ngModel name="idAuthor" #idAuthor id="authorId" type="text" class="form-control">
       </div>
     </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="authorName">Author Name</label>
         <div class="col-sm-4">
-          <input required="required" ngModel name="authorName"  id="authorName" type="text"
+          <input required="required" #nameAuthor ngModel name="nameAuthor"  id="authorName" type="text"
                  class="form-control">
         </div>
       </div>
@@ -19,7 +19,7 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="authorAge">Author Age</label>
         <div class="col-sm-4">
-          <input id="authorAge" type="text" ngModel name="authorAge" class="form-control">
+          <input id="authorAge" #ageAuthor type="text" ngModel name="ageAuthor" class="form-control">
         </div>
       </div>
 
@@ -27,7 +27,8 @@
           {{fg.value | json}}
         </p>
 
-      <button class="btn btn-primary" [disabled]="!fg.valid">Submit</button>
+      <button class="btn btn-primary" (click)="addAuthor(fg.value
+      )"  [disabled]="!fg.valid" type="submit" >Submit</button>
   </form>
 </div>
 <br><br>
@@ -52,8 +53,4 @@
     </tbody>
   </table>
 </div>
-<!--
-<ul>
-  <li *ngFor="let author of au">
-    {{author.nameAuthor}}</li>
-</ul>-->
+
